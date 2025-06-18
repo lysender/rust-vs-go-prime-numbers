@@ -1,3 +1,5 @@
+use std::io::{BufWriter, Write, stdout};
+
 fn is_prime(n: i32) -> bool {
     let mut i = 2;
     while i * i <= n {
@@ -11,11 +13,13 @@ fn is_prime(n: i32) -> bool {
 
 fn main() {
     let mut count = 0;
+    let out = stdout();
+    let mut out = BufWriter::new(out.lock());
     let mut start = 2;
     while count < 1000 {
         if is_prime(start) {
             count += 1;
-            println!("{}", start);
+            writeln!(out, "{}", start).unwrap();
         }
         start += 1;
     }

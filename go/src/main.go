@@ -28,7 +28,7 @@ func main() {
 	go generate(ch)
 	for range n {
 		prime := <-ch
-		fmt.Println(prime)
+		fmt.Fprintln(out, prime)
 		next := make(chan int)
 		go filter(ch, next, prime)
 		ch = next
