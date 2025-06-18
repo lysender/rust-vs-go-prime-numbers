@@ -1,0 +1,1 @@
+# rust-vs-go-prime-numbers
